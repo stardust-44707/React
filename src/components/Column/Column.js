@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 const Column = props => (
       <section className={styles.component}>
-        <h3 className={styles.title}>{props.titleText}</h3>
+        <h3 className={styles.title}>{props.columnText}</h3>
       </section>
 )
 
 Column.propTypes = {
-  titleText: PropTypes.node,
+  columnText: PropTypes.node,
   children: PropTypes.node,
 };
 
