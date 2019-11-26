@@ -14,3 +14,13 @@
     border-radius: $radius;
   }
 }
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+}
+
+.heading {
+  padding: 20px 0;
+}

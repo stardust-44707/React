@@ -1,26 +1,37 @@
 import React from 'react';
-import Card from '../Card/Card';
-import PropTypes from 'prop-types';
+import Column from '../Column/ColumnContainer.js';
+import Container from '../Container/Container';
 import styles from './Search.scss';
-
+import PropTypes from 'prop-types';
 
 class SearchResult extends React.Component {
-    static propTypes = {
-      cards: PropTypes.array,
-    }
+  static propTypes = {
+    changeSearchString: PropTypes.func,
+    columns: PropTypes.array,
+    match: PropTypes.any,
+  }
 
-    render() {
-      const {cards} = this.props;
-      return (
-        <section className={styles.component}>
-          <div>
-            {cards.map(cardData => (
-              <Card key={cardData.id} {...cardData} />
-            ))}
-          </div>
-        </section>
-      );
-    }
+  componentDidMount() {
+    this.props.changeSearchString(this.props.match.params.name);
+  }
+
+  componentDidUpdate() {
+    this.props.changeSearchString(this.props.match.params.name);
+  }
+
+  render() {
+    const {columns} = this.props;
+    return (
+      <Container>
+        <h2 className={styles.heading}>Search</h2>
+        <div className={styles.columns}>
+          {columns.map(columnData => (
+            <Column key={columnData.id} {...columnData} filter={true} />
+          ))}
+        </div>
+      </Container>
+    );
+  }
 }
 
 export default SearchResult;
